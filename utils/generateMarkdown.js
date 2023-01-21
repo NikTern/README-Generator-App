@@ -108,7 +108,7 @@ function renderLicenseSection(license) {
 
 // Function to generate markdown for README
 function generateMarkdown(response) {
-  let {title, description, contents, installation, usage, license, contributing, tests, githubUsername, emailAddress} = response
+  let {title, description, installation, usage, license, contributing, tests, githubUsername, emailAddress} = response
   licenseBadge = renderLicenseBadge(license)
   licenseLink = renderLicenseLink(license)
   licenseSection = renderLicenseSection(license)
@@ -119,12 +119,12 @@ function generateMarkdown(response) {
 
   githubUsername = githubUsername.trim()
   if(githubUsername.length  > 0){
-    githubUsername = `GitHub Username: ${githubUsername}`
+    githubUsername = `GitHub Username: ${githubUsername} - https://github.com/${githubUsername}`
   }
 
   emailAddress = emailAddress.trim()
   if(emailAddress.length  > 0){
-    emailAddress = `Email Address: ${emailAddress}`
+    emailAddress = `Email Address: ${emailAddress} - Send an email with subject '${title}' to reach out with additional questions`
   }
 
   return(
@@ -133,7 +133,19 @@ function generateMarkdown(response) {
   ${description}
 
   ## Contents
-  ${contents}
+  - [Description](#description)
+
+  - [Installation](#installation)
+  
+  - [Usage](#usage)
+
+  - [License](#License)
+
+  - [Contributing](#contributing)
+
+  - [Tests](#tests)
+
+  - [Questions](#questions)
 
   ## Installation
   ${installation}
