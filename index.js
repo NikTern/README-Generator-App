@@ -31,9 +31,10 @@ const questions = [
     name: 'usage',
 },
 {
-    type: 'input',
+    type: 'list',
     message: 'License:',
     name: 'license',
+    choices: ["No License", "Apache 2.0", "GNU General Public License v3.0", "MIT License", "BSD 2-Clause 'Simplified' License", "BSD 3-Clause 'New' or 'Revised' License"]
 },
 {
     type: 'input',
@@ -58,13 +59,14 @@ function writeReadMe(filename, data){
     )
 }
 
-
 // TODO: Create a function to initialize app
 function init(){
     inquirer
         .prompt(questions)
         .then((response) => {
+            //generate markdown based on response
             let md = generateMarkdown(response)
+            //create new readme file
             writeReadMe(`${response.title}.md`, md)
         })}
 
