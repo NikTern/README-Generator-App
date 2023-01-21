@@ -79,7 +79,7 @@ function renderLicenseSection(license) {
       THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
 
     case "BSD 2-Clause 'Simplified' License":
-      return `Copyright 2023
+    return `Copyright 2023
 
       Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
       
@@ -108,10 +108,25 @@ function renderLicenseSection(license) {
 
 // Function to generate markdown for README
 function generateMarkdown(response) {
-  const {title, description, contents, installation, usage, license, contributing, tests, questions} = response
+  let {title, description, contents, installation, usage, license, contributing, tests, githubUsername, emailAddress} = response
   licenseBadge = renderLicenseBadge(license)
   licenseLink = renderLicenseLink(license)
   licenseSection = renderLicenseSection(license)
+
+  if (license !=="No License"){
+    license = `Covered under the ${license}:`
+  }
+
+  githubUsername = githubUsername.trim()
+  if(githubUsername.length  > 0){
+    githubUsername = `GitHub Username: ${githubUsername}`
+  }
+
+  emailAddress = emailAddress.trim()
+  if(emailAddress.length  > 0){
+    emailAddress = `Email Address: ${emailAddress}`
+  }
+
   return(
   `# ${title} ${licenseBadge}
   ## Description
@@ -127,7 +142,7 @@ function generateMarkdown(response) {
   ${usage}
 
   ## License
-  Covered under the ${license}
+  ${license}
   ${licenseLink}
   
   ${licenseSection}
@@ -139,7 +154,9 @@ function generateMarkdown(response) {
   ${tests}
 
   ## Questions
-  ${questions}
+  ${githubUsername}
+  
+  ${emailAddress}
 
 `)
 }
