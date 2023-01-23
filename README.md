@@ -18,10 +18,12 @@
   - [Questions](#questions)
 
   ## Installation
-  'npm install' is used to download Inquirer. Type it into the terminal.
+  'npm install' is used to download Inquirer. Type it into the terminal to download the relevant packages.
 
   ## Usage
-  Type 'node index.js' in the terminal to run the app. Input the information you want written to the README file and your README will be generated when the questions have all been asked.
+  Type 'node index.js' in the terminal to run the app. You must have node.js installed. Input the information you want written to the README file after each command line prompt is given and your README will be generated when the questions have all been asked.
+
+  Video demo can be found here: https://drive.google.com/file/d/1obYi63N8CFSGDncY0i8v40ZW1l8NBeg7/view?usp=sharing
 
   ## License
   Covered under the MIT License:
@@ -39,7 +41,8 @@
   Nikolas Ternezis
 
   ## Tests
-  
+  When no license is given, 'No license' will be displayed in the License section of the generated README file.
+  [no-license-test-image](/assets/no-license-screenshot.png)
 
   ## Questions
   GitHub Username: Niktern - https://github.com/Niktern
